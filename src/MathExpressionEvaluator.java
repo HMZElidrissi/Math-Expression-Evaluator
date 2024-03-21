@@ -114,11 +114,12 @@ public class MathExpressionEvaluator {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter an expression: ");
-        String expression = scanner.nextLine();
+        if (args.length == 0) {
+            System.out.println("Usage: java MathExpressionEvaluator <expression>");
+            return;
+        }
         try {
-            double result = evaluate(expression);
+            double result = evaluate(args[0]);
             System.out.println("Result: " + result);
         } catch (IllegalArgumentException | ArithmeticException e) {
             System.out.println("Error: " + e.getMessage());
